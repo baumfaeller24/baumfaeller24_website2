@@ -1,5 +1,5 @@
 import React from 'react';
-import { TreePine, Scissors, Shield, Zap, Drill, Bulldozer, ArrowRight } from 'lucide-react';
+import { TreePine, Scissors, Shield, Zap, Drill, Truck, ArrowRight } from 'lucide-react';
 
 const ImprovedServices = () => {
   const services = [
@@ -45,7 +45,7 @@ const ImprovedServices = () => {
     },
     {
       id: 6,
-      icon: Bulldozer,
+      icon: Truck,
       title: "Baufeldräumung",
       description: "Komplette Rodung und Räumung von Bauflächen für Ihr Bauprojekt.",
       color: "bg-orange-600 hover:bg-orange-700",
