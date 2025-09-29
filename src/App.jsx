@@ -9,6 +9,8 @@ import HyperlocalContentAI from './components/HyperlocalContentAI.jsx'
 import CompetitorMonitoringAI from './components/CompetitorMonitoringAI.jsx'
 import ReviewManagementAI from './components/ReviewManagementAI.jsx'
 import OptimizedWeatherBanner from './components/OptimizedWeatherBanner.jsx'
+import ImprovedHero from './components/ImprovedHero.jsx'
+import ImprovedServices from './components/ImprovedServices.jsx'
 import './App.css'
 import heroBackground from './assets/hero-background.jpg'
 import treeEquipment from './assets/tree-equipment.jpg'
@@ -100,75 +102,11 @@ function App() {
         <OptimizedWeatherBanner />
       </div>
 
-      {/* Hero Section */}
-      <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroBackground})` }}
-        >
-          <div className="absolute inset-0 bg-black/50"></div>
-        </div>
-        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-            Ihr zuverlässiger Partner für
-            <span className="text-green-400 block">Baumfällungen</span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-200">
-            Professionelle Baumfällung und Baumpflege in Berlin & Brandenburg
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg">
-              <Phone className="mr-2 h-5 w-5" />
-              Jetzt anrufen
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg">
-              Kostenloses Angebot
-            </Button>
-          </div>
-          <div className="flex flex-wrap justify-center gap-6 mt-12">
-            {features.map((feature, index) => (
-              <div key={index} className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
-                <feature.icon className="h-5 w-5 text-green-400" />
-                <span className="text-sm font-medium">{feature.text}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Improved Hero Section - Inspired by Evergreen Design */}
+      <ImprovedHero heroBackground={heroBackground} />
 
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <Badge className="mb-4 bg-green-100 text-green-800">Unsere Leistungen</Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Alles rund um den Baum
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Mit über 12 Jahren Erfahrung bieten wir Ihnen professionelle Baumarbeiten 
-              mit modernster Technik und höchsten Sicherheitsstandards.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
-                <CardHeader>
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-600 transition-colors">
-                    <service.icon className="h-6 w-6 text-green-600 group-hover:text-white" />
-                  </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base leading-relaxed">
-                    {service.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Improved Services Section - 2-Column Layout inspired by Evergreen */}
+      <ImprovedServices />
 
       {/* About Section */}
       <section id="about" className="py-20">
