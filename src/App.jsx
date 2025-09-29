@@ -9,7 +9,7 @@ import HyperlocalContentAI from './components/HyperlocalContentAI.jsx'
 import CompetitorMonitoringAI from './components/CompetitorMonitoringAI.jsx'
 import ReviewManagementAI from './components/ReviewManagementAI.jsx'
 import OptimizedWeatherBanner from './components/OptimizedWeatherBanner.jsx'
-import ImprovedHero from './components/ImprovedHero.jsx'
+import DynamicHero from './components/DynamicHero.jsx'
 import ImprovedServices from './components/ImprovedServices.jsx'
 import './App.css'
 import heroBackground from './assets/hero-background.jpg'
@@ -102,8 +102,8 @@ function App() {
         <OptimizedWeatherBanner />
       </div>
 
-      {/* Improved Hero Section - Inspired by Evergreen Design */}
-      <ImprovedHero heroBackground={heroBackground} />
+      {/* Dynamic Hero Section - Professional Work Scenes */}
+      <DynamicHero />
 
       {/* Improved Services Section - 2-Column Layout inspired by Evergreen */}
       <ImprovedServices />
