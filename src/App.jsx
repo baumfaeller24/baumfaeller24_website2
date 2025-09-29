@@ -60,24 +60,19 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* AI-powered SEO Optimization - Always Active */}
-      <SEOOptimizer 
-        pageType="homepage" 
-        location="Berlin Brandenburg" 
-        service="Baumfällung" 
-      />
-      
-      {/* Seasonal AI Content - Always Active */}
-      <SeasonalContentAI />
-      
-      {/* Hyperlocal Content AI - Always Active */}
-      <HyperlocalContentAI />
-      
-      {/* Competitor Monitoring AI - Background Process */}
-      <CompetitorMonitoringAI />
-      
-      {/* Review Management AI - Background Process */}
-      <ReviewManagementAI />
+      {/* AI Components - Hidden Background Processes */}
+      <div style={{ display: 'none' }}>
+        <SEOOptimizer 
+          pageType="homepage" 
+          location="Berlin Brandenburg"
+          keywords={["baumfällung", "baumpflege", "sturmschäden"]}
+        />
+        <SeasonalContentAI />
+        <HyperlocalContentAI />
+        <CompetitorMonitoringAI />
+        <ReviewManagementAI />
+      </div>
+
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-border z-50">
         <div className="container mx-auto px-4 py-4">
