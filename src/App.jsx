@@ -8,6 +8,7 @@ import SeasonalContentAI from './components/SeasonalContentAI.jsx'
 import HyperlocalContentAI from './components/HyperlocalContentAI.jsx'
 import CompetitorMonitoringAI from './components/CompetitorMonitoringAI.jsx'
 import ReviewManagementAI from './components/ReviewManagementAI.jsx'
+import WeatherBanner from './components/WeatherBanner.jsx'
 import './App.css'
 import heroBackground from './assets/hero-background.jpg'
 import treeEquipment from './assets/tree-equipment.jpg'
@@ -98,6 +99,11 @@ function App() {
           </div>
         </div>
       </nav>
+
+      {/* Weather Banner - Dynamic weather integration */}
+      <div className="pt-20"> {/* Account for fixed navigation */}
+        <WeatherBanner />
+      </div>
 
       {/* Hero Section */}
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
