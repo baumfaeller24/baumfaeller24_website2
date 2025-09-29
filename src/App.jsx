@@ -3,6 +3,11 @@ import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { Phone, Mail, MapPin, Clock, Shield, Award, Wrench, TreePine, Truck, Zap } from 'lucide-react'
+import SEOOptimizer from './components/SEOOptimizer.jsx'
+import SeasonalContentAI from './components/SeasonalContentAI.jsx'
+import HyperlocalContentAI from './components/HyperlocalContentAI.jsx'
+import CompetitorMonitoringAI from './components/CompetitorMonitoringAI.jsx'
+import ReviewManagementAI from './components/ReviewManagementAI.jsx'
 import './App.css'
 import heroBackground from './assets/hero-background.jpg'
 import treeEquipment from './assets/tree-equipment.jpg'
@@ -54,6 +59,24 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* AI-powered SEO Optimization - Always Active */}
+      <SEOOptimizer 
+        pageType="homepage" 
+        location="Berlin Brandenburg" 
+        service="Baumfällung" 
+      />
+      
+      {/* Seasonal AI Content - Always Active */}
+      <SeasonalContentAI />
+      
+      {/* Hyperlocal Content AI - Always Active */}
+      <HyperlocalContentAI />
+      
+      {/* Competitor Monitoring AI - Background Process */}
+      <CompetitorMonitoringAI />
+      
+      {/* Review Management AI - Background Process */}
+      <ReviewManagementAI />
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-border z-50">
         <div className="container mx-auto px-4 py-4">
