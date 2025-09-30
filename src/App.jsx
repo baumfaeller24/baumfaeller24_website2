@@ -108,11 +108,9 @@ function App() {
         </div>
       </nav>
 
-      {/* Weather Banner - Only shows with real API key */}
+      {/* Weather Banner - Open-Meteo (free, no API key required) */}
       <div className="pt-18"> {/* Account for fixed navigation */}
-        {process.env.REACT_APP_OPENWEATHER_API_KEY && (
-          <OptimizedWeatherBanner />
-        )}
+        <OptimizedWeatherBanner />
       </div>
 
       {/* Dynamic Hero Section - Professional Work Scenes */}

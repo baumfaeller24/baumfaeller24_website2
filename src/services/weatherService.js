@@ -1,18 +1,21 @@
 // Real Weather API Service for Berlin-Mitte
-// Integrates OpenWeatherMap API for live weather data
+// Integrates Open-Meteo API for live weather data (completely free, no API key required)
 
 const BERLIN_MITTE_COORDS = {
-  lat: 52.5200,
-  lon: 13.4050,
+  lat: 52.52,
+  lon: 13.41,
   name: 'Berlin-Mitte'
 };
 
-// OpenWeatherMap API configuration
+// Open-Meteo API configuration (free, no API key required)
 const WEATHER_CONFIG = {
-  baseUrl: 'https://api.openweathermap.org/data/2.5',
-  apiKey: process.env.REACT_APP_OPENWEATHER_API_KEY || null,
-  units: 'metric',
-  lang: 'de'
+  baseUrl: 'https://api.open-meteo.com/v1/forecast',
+  params: {
+    latitude: BERLIN_MITTE_COORDS.lat,
+    longitude: BERLIN_MITTE_COORDS.lon,
+    current: 'temperature_2m,relative_humidity_2m,wind_speed_10m,wind_direction_10m,weather_code',
+    timezone: 'Europe/Berlin'
+  }
 };
 
 // German Weather Service (DWD) for official warnings
@@ -22,16 +25,12 @@ const DWD_CONFIG = {
 };
 
 /**
- * Fetch current weather data from OpenWeatherMap
+ * Fetch current weather data from Open-Meteo (free, no API key required)
  */
 export const fetchCurrentWeather = async () => {
-  // If no API key is available, throw error - no fake data
-  if (!WEATHER_CONFIG.apiKey || WEATHER_CONFIG.apiKey === 'demo_key') {
-    throw new Error('No weather API key configured');
-  }
-  
   try {
-    const url = `${WEATHER_CONFIG.baseUrl}/weather?lat=${BERLIN_MITTE_COORDS.lat}&lon=${BERLIN_MITTE_COORDS.lon}&appid=${WEATHER_CONFIG.apiKey}&units=${WEATHER_CONFIG.units}&lang=${WEATHER_CONFIG.lang}`;
+    const params = new URLSearchParams(WEATHER_CONFIG.params);
+    const url = `${WEATHER_CONFIG.baseUrl}?${params}`;
     
     const response = await fetch(url);
     
@@ -40,30 +39,62 @@ export const fetchCurrentWeather = async () => {
     }
     
     const data = await response.json();
+    const current = data.current;
+    
+    // Convert weather code to condition
+    const condition = getWeatherConditionFromCode(current.weather_code);
     
     return {
       location: BERLIN_MITTE_COORDS.name,
-      temperature: Math.round(data.main.temp),
-      feelsLike: Math.round(data.main.feels_like),
-      humidity: data.main.humidity,
-      pressure: data.main.pressure,
-      windSpeed: Math.round(data.wind.speed * 3.6), // Convert m/s to km/h
-      windDirection: data.wind.deg,
-      windGust: data.wind.gust ? Math.round(data.wind.gust * 3.6) : null,
-      visibility: data.visibility ? Math.round(data.visibility / 1000) : null, // Convert to km
-      cloudiness: data.clouds.all,
-      condition: data.weather[0].main.toLowerCase(),
-      description: data.weather[0].description,
-      icon: data.weather[0].icon,
-      sunrise: new Date(data.sys.sunrise * 1000),
-      sunset: new Date(data.sys.sunset * 1000),
+      temperature: Math.round(current.temperature_2m),
+      feelsLike: Math.round(current.temperature_2m), // Open-Meteo doesn't provide feels_like in basic plan
+      humidity: Math.round(current.relative_humidity_2m),
+      pressure: null, // Not included in basic request
+      windSpeed: Math.round(current.wind_speed_10m),
+      windDirection: current.wind_direction_10m,
+      windGust: null, // Would need additional parameter
+      visibility: null, // Not included in basic request
+      cloudiness: null, // Not included in basic request
+      condition: condition.condition,
+      description: condition.description,
+      icon: condition.icon,
+      sunrise: null, // Would need additional parameter
+      sunset: null, // Would need additional parameter
       timestamp: new Date(),
-      source: 'OpenWeatherMap'
+      source: 'Open-Meteo'
     };
   } catch (error) {
     console.error('Error fetching weather data:', error);
     throw error;
   }
+};
+
+/**
+ * Convert Open-Meteo weather code to condition
+ */
+const getWeatherConditionFromCode = (code) => {
+  const weatherCodes = {
+    0: { condition: 'clear', description: 'Klar', icon: '01d' },
+    1: { condition: 'clear', description: 'Überwiegend klar', icon: '01d' },
+    2: { condition: 'clouds', description: 'Teilweise bewölkt', icon: '02d' },
+    3: { condition: 'clouds', description: 'Bewölkt', icon: '03d' },
+    45: { condition: 'mist', description: 'Nebel', icon: '50d' },
+    48: { condition: 'mist', description: 'Reifnebel', icon: '50d' },
+    51: { condition: 'drizzle', description: 'Leichter Sprühregen', icon: '09d' },
+    53: { condition: 'drizzle', description: 'Sprühregen', icon: '09d' },
+    55: { condition: 'drizzle', description: 'Starker Sprühregen', icon: '09d' },
+    61: { condition: 'rain', description: 'Leichter Regen', icon: '10d' },
+    63: { condition: 'rain', description: 'Regen', icon: '10d' },
+    65: { condition: 'rain', description: 'Starker Regen', icon: '10d' },
+    71: { condition: 'snow', description: 'Leichter Schneefall', icon: '13d' },
+    73: { condition: 'snow', description: 'Schneefall', icon: '13d' },
+    75: { condition: 'snow', description: 'Starker Schneefall', icon: '13d' },
+    95: { condition: 'thunderstorm', description: 'Gewitter', icon: '11d' },
+    96: { condition: 'thunderstorm', description: 'Gewitter mit Hagel', icon: '11d' },
+    99: { condition: 'thunderstorm', description: 'Schweres Gewitter mit Hagel', icon: '11d' }
+  };
+  
+  return weatherCodes[code] || { condition: 'clouds', description: 'Bewölkt', icon: '03d' };
 };
 
 /**
