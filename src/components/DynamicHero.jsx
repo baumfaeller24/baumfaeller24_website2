@@ -19,35 +19,40 @@ const DynamicHero = () => {
       title: "Ihr zuverlässiger Partner für",
       subtitle: "Baumarbeiten",
       description: "Professionelle Baumfällung, Baumpflege und Sturmschadenbeseitigung in Berlin & Brandenburg",
-      focus: "Allgemeine Baumarbeiten"
+      focus: "Allgemeine Baumarbeiten",
+      mobilePosition: "bg-center"
     },
     {
       image: treeClimber,
       title: "Professionelle",
       subtitle: "Seilklettertechnik",
       description: "Sichere Baumfällung in schwer zugänglichen Bereichen mit modernster Klettertechnik",
-      focus: "Spezialfällungen"
+      focus: "Spezialfällungen",
+      mobilePosition: "bg-center"
     },
     {
       image: excavatorWork,
       title: "Großflächige",
       subtitle: "Rodungsarbeiten",
       description: "Effiziente Flächenräumung mit schwerem Gerät für Bauprojekte und Landschaftsgestaltung",
-      focus: "Baufeldräumung"
+      focus: "Baufeldräumung",
+      mobilePosition: "bg-center"
     },
     {
       image: stumpGrinder,
       title: "Professionelle",
       subtitle: "Stubbenfräsung",
       description: "Komplette Entfernung von Baumstümpfen mit modernster Frästechnik",
-      focus: "Wurzelstockentfernung"
+      focus: "Wurzelstockentfernung",
+      mobilePosition: "bg-center"
     },
     {
       image: treeHandler,
       title: "Moderne",
       subtitle: "Maschinentechnik",
       description: "Präzise Baumarbeiten mit speziellen Maschinen für maximale Sicherheit und Effizienz",
-      focus: "Technische Expertise"
+      focus: "Technische Expertise",
+      mobilePosition: "bg-center"
     }
   ];
 
@@ -95,7 +100,7 @@ const DynamicHero = () => {
         {workScenes.map((scene, index) => (
           <div
             key={index}
-            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+            className={`absolute inset-0 bg-cover ${scene.mobilePosition} md:bg-center bg-no-repeat transition-opacity duration-1000 ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ backgroundImage: `url(${scene.image})` }}
@@ -153,17 +158,17 @@ const DynamicHero = () => {
             </span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 animate-fade-in">
             <span className="block text-white mb-2 transition-all duration-500">
               {currentScene.title}
             </span>
-            <span className="block text-green-400 text-5xl md:text-7xl lg:text-8xl transition-all duration-500">
+            <span className="block text-green-400 text-4xl md:text-5xl lg:text-6xl transition-all duration-500">
               {currentScene.subtitle}
             </span>
           </h1>
           
           {/* Dynamic Description */}
-          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-4xl mx-auto leading-relaxed transition-all duration-500">
+          <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-4xl mx-auto leading-relaxed transition-all duration-500">
             {currentScene.description}
           </p>
         </div>
