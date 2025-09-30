@@ -3,11 +3,7 @@ import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { Phone, Mail, MapPin, Clock, Shield, Award, Wrench, TreePine, Truck, Zap } from 'lucide-react'
-import SEOOptimizer from './components/SEOOptimizer.jsx'
-import SeasonalContentAI from './components/SeasonalContentAI.jsx'
-import HyperlocalContentAI from './components/HyperlocalContentAI.jsx'
-import CompetitorMonitoringAI from './components/CompetitorMonitoringAI.jsx'
-import ReviewManagementAI from './components/ReviewManagementAI.jsx'
+import RealSEOOptimizer from './components/RealSEOOptimizer.jsx'
 import OptimizedWeatherBanner from './components/OptimizedWeatherBanner.jsx'
 import DynamicHero from './components/DynamicHero.jsx'
 import ImprovedServices from './components/ImprovedServices.jsx'
@@ -63,17 +59,8 @@ function App() {
   return (
     <div className="min-h-screen bg-background">
       {/* AI Components - Hidden Background Processes */}
-      <div style={{ display: 'none' }}>
-        <SEOOptimizer 
-          pageType="homepage" 
-          location="Berlin Brandenburg"
-          keywords={["baumfällung", "baumpflege", "sturmschäden"]}
-        />
-        <SeasonalContentAI />
-        <HyperlocalContentAI />
-        <CompetitorMonitoringAI />
-        <ReviewManagementAI />
-      </div>
+      {/* Real SEO Optimization with OpenAI */}
+      <RealSEOOptimizer />
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-border z-50">
