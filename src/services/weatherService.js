@@ -10,7 +10,7 @@ const BERLIN_MITTE_COORDS = {
 // OpenWeatherMap API configuration
 const WEATHER_CONFIG = {
   baseUrl: 'https://api.openweathermap.org/data/2.5',
-  apiKey: process.env.REACT_APP_OPENWEATHER_API_KEY || 'demo_key',
+  apiKey: process.env.REACT_APP_OPENWEATHER_API_KEY || null,
   units: 'metric',
   lang: 'de'
 };
@@ -25,6 +25,12 @@ const DWD_CONFIG = {
  * Fetch current weather data from OpenWeatherMap
  */
 export const fetchCurrentWeather = async () => {
+  // If no API key is available, use fallback data immediately
+  if (!WEATHER_CONFIG.apiKey || WEATHER_CONFIG.apiKey === 'demo_key') {
+    console.log('No weather API key configured, using realistic fallback data');
+    return getFallbackWeatherData();
+  }
+  
   try {
     const url = `${WEATHER_CONFIG.baseUrl}/weather?lat=${BERLIN_MITTE_COORDS.lat}&lon=${BERLIN_MITTE_COORDS.lon}&appid=${WEATHER_CONFIG.apiKey}&units=${WEATHER_CONFIG.units}&lang=${WEATHER_CONFIG.lang}`;
     
@@ -202,20 +208,52 @@ export const getBusinessWeatherAssessment = (weather, alertLevel) => {
 const getFallbackWeatherData = () => {
   const now = new Date();
   const hour = now.getHours();
+  const month = now.getMonth(); // 0-11
   
-  // Simulate realistic Berlin weather based on time and season
-  const isWinter = now.getMonth() >= 10 || now.getMonth() <= 2;
-  const baseTemp = isWinter ? 5 : 18;
-  const tempVariation = Math.random() * 10 - 5;
+  // Simulate realistic Berlin weather based on current season
+  let baseTemp, condition, description;
+  
+  if (month >= 11 || month <= 1) { // Winter
+    baseTemp = Math.random() * 8 - 2; // -2 to 6°C
+    condition = Math.random() > 0.7 ? 'snow' : 'clouds';
+    description = condition === 'snow' ? 'Leichter Schneefall' : 'Bewölkt';
+  } else if (month >= 2 && month <= 4) { // Spring
+    baseTemp = Math.random() * 15 + 8; // 8 to 23°C
+    condition = Math.random() > 0.6 ? 'rain' : 'clouds';
+    description = condition === 'rain' ? 'Regenschauer' : 'Wechselnd bewölkt';
+  } else if (month >= 5 && month <= 7) { // Summer
+    baseTemp = Math.random() * 12 + 18; // 18 to 30°C
+    condition = Math.random() > 0.8 ? 'clear' : 'clouds';
+    description = condition === 'clear' ? 'Sonnig' : 'Teilweise bewölkt';
+  } else { // Autumn
+    baseTemp = Math.random() * 12 + 5; // 5 to 17°C
+    condition = Math.random() > 0.5 ? 'rain' : 'clouds';
+    description = condition === 'rain' ? 'Herbstregen' : 'Bewölkt';
+  }
+  
+  const temperature = Math.round(baseTemp);
+  const windSpeed = Math.round(Math.random() * 20 + 8); // 8-28 km/h
+  const windDirection = Math.round(Math.random() * 360);
+  const humidity = Math.round(Math.random() * 30 + 60); // 60-90%
   
   return {
     location: BERLIN_MITTE_COORDS.name,
-    temperature: Math.round(baseTemp + tempVariation),
-    windSpeed: Math.round(Math.random() * 25 + 10), // 10-35 km/h
-    condition: hour > 6 && hour < 20 ? 'partly-cloudy' : 'cloudy',
-    description: 'Wechselnd bewölkt',
+    temperature,
+    feelsLike: Math.round(temperature - (windSpeed * 0.2)), // Wind chill effect
+    humidity,
+    pressure: Math.round(Math.random() * 40 + 1000), // 1000-1040 hPa
+    windSpeed,
+    windDirection,
+    windGust: windSpeed > 20 ? Math.round(windSpeed * 1.3) : null,
+    visibility: Math.round(Math.random() * 5 + 10), // 10-15 km
+    cloudiness: condition === 'clear' ? Math.round(Math.random() * 20) : Math.round(Math.random() * 50 + 50),
+    condition,
+    description,
+    icon: condition === 'clear' ? (hour > 6 && hour < 20 ? '01d' : '01n') : '03d',
+    sunrise: new Date(now.getFullYear(), now.getMonth(), now.getDate(), 7, 0),
+    sunset: new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0),
     timestamp: now,
-    source: 'Fallback',
+    source: 'Realistische Simulation',
     isFallback: true
   };
 };
