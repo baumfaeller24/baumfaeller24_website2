@@ -8,7 +8,7 @@ import SeasonalContentAI from './components/SeasonalContentAI.jsx'
 import HyperlocalContentAI from './components/HyperlocalContentAI.jsx'
 import CompetitorMonitoringAI from './components/CompetitorMonitoringAI.jsx'
 import ReviewManagementAI from './components/ReviewManagementAI.jsx'
-import OptimizedWeatherBanner from './components/OptimizedWeatherBanner.jsx'
+
 import DynamicHero from './components/DynamicHero.jsx'
 import ImprovedServices from './components/ImprovedServices.jsx'
 import './App.css'
@@ -108,9 +108,8 @@ function App() {
         </div>
       </nav>
 
-      {/* Weather Banner - Dynamic weather integration */}
+      {/* Navigation spacing */}
       <div className="pt-18"> {/* Account for fixed navigation */}
-        <OptimizedWeatherBanner />
       </div>
 
       {/* Dynamic Hero Section - Professional Work Scenes */}
