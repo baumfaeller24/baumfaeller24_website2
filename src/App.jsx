@@ -77,11 +77,11 @@ function App() {
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-border z-50">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <TreePine className="h-8 w-8 text-green-600" />
-              <span className="text-2xl font-bold text-foreground">Baumfäller24</span>
+              <TreePine className="h-7 w-7 text-green-600" />
+              <span className="text-xl font-bold text-foreground">Baumfäller24</span>
             </div>
             <div className="hidden md:flex items-center space-x-6">
               <a href="#home" className="text-foreground hover:text-green-600 transition-colors">Start</a>
@@ -89,16 +89,27 @@ function App() {
               <a href="#about" className="text-foreground hover:text-green-600 transition-colors">Über uns</a>
               <a href="#contact" className="text-foreground hover:text-green-600 transition-colors">Kontakt</a>
             </div>
-            <div className="flex items-center space-x-2">
-              <Phone className="h-4 w-4 text-green-600" />
-              <span className="font-semibold text-foreground">030 65 94 00 49</span>
+            <div className="flex items-center space-x-4">
+              {/* Certificate Badges */}
+              <div className="hidden lg:flex items-center space-x-2">
+                <div className="w-9 h-9 bg-green-100 rounded border border-green-200 flex items-center justify-center">
+                  <Shield className="h-4 w-4 text-green-600" />
+                </div>
+                <div className="w-9 h-9 bg-blue-100 rounded border border-blue-200 flex items-center justify-center">
+                  <Award className="h-4 w-4 text-blue-600" />
+                </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Phone className="h-4 w-4 text-green-600" />
+                <span className="font-semibold text-foreground">030 65 94 00 49</span>
+              </div>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Weather Banner - Dynamic weather integration */}
-      <div className="pt-20"> {/* Account for fixed navigation */}
+      <div className="pt-18"> {/* Account for fixed navigation */}
         <OptimizedWeatherBanner />
       </div>
 
@@ -109,15 +120,15 @@ function App() {
       <ImprovedServices />
 
       {/* About Section */}
-      <section id="about" className="py-20">
+      <section id="about" className="py-18">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <Badge className="mb-4 bg-green-100 text-green-800">Über uns</Badge>
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-5">
                 12 Jahre Erfahrung in Berlin & Brandenburg
               </h2>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-base text-muted-foreground mb-5 leading-relaxed">
                 Seit über einem Jahrzehnt sind wir Ihr zuverlässiger Partner für alle Arbeiten rund um den Baum. 
                 Ob einfache Baumfällung, komplexe Abtragung mittels Hebetechnik für schwer zugängliche Bäume, 
                 oder großangelegte Rodungsarbeiten - wir sind Ihr Fachmann.
@@ -157,22 +168,22 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-50">
+      <section id="contact" className="py-18 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-green-100 text-green-800">Kontakt</Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-5">
               Jetzt kostenloses Angebot anfordern
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Kontaktieren Sie uns für eine unverbindliche Beratung und ein kostenloses Angebot.
             </p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <Card className="p-8">
+            <Card className="p-7">
               <CardHeader className="px-0 pt-0">
-                <CardTitle className="text-2xl">Kontaktinformationen</CardTitle>
+                <CardTitle className="text-xl">Kontaktinformationen</CardTitle>
                 <CardDescription>
                   Wir sind gerne für Sie da und beraten Sie umfassend.
                 </CardDescription>
@@ -221,9 +232,9 @@ function App() {
               </CardContent>
             </Card>
             
-            <Card className="p-8">
+            <Card className="p-7">
               <CardHeader className="px-0 pt-0">
-                <CardTitle className="text-2xl">Angebot anfordern</CardTitle>
+                <CardTitle className="text-xl">Angebot anfordern</CardTitle>
                 <CardDescription>
                   Beschreiben Sie uns Ihr Projekt und wir erstellen Ihnen ein kostenloses Angebot.
                 </CardDescription>
@@ -234,30 +245,39 @@ function App() {
                     <input 
                       type="text" 
                       placeholder="Vorname" 
-                      className="px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                      className="px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
                     />
                     <input 
                       type="text" 
                       placeholder="Nachname" 
-                      className="px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                      className="px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
                     />
                   </div>
                   <input 
                     type="email" 
                     placeholder="E-Mail Adresse" 
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                    className="w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
                   />
                   <input 
                     type="tel" 
                     placeholder="Telefonnummer" 
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                    className="w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
                   />
+                  <select className="w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 bg-white">
+                    <option value="">Wofür benötigen Sie unsere Hilfe?</option>
+                    <option value="einzelbaum">Einzelbaum fällen (Privatleute)</option>
+                    <option value="spezialfallung">Hebebühne/Seilklettertechnik</option>
+                    <option value="baufeldräumung">Baufeldräumung (Gewerbe)</option>
+                    <option value="sturmschaden">Sturmschaden (Notfall)</option>
+                    <option value="baumpflege">Baumpflege/Kronenschnitt</option>
+                    <option value="stubbenfräsung">Wurzelstockentfernung</option>
+                  </select>
                   <textarea 
                     placeholder="Beschreiben Sie Ihr Projekt..." 
                     rows="4"
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                    className="w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
                   ></textarea>
-                  <Button className="w-full bg-green-600 hover:bg-green-700 py-3">
+                  <Button className="w-full bg-green-600 hover:bg-green-700 py-2">
                     Kostenloses Angebot anfordern
                   </Button>
                 </form>
@@ -268,13 +288,13 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 text-white py-10">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-7">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <TreePine className="h-8 w-8 text-green-400" />
-                <span className="text-2xl font-bold">Baumfäller24</span>
+                <TreePine className="h-7 w-7 text-green-400" />
+                <span className="text-xl font-bold">Baumfäller24</span>
               </div>
               <p className="text-gray-400 mb-4">
                 Ihr zuverlässiger Partner für professionelle Baumfällungen in Berlin & Brandenburg.
