@@ -25,10 +25,9 @@ const DWD_CONFIG = {
  * Fetch current weather data from OpenWeatherMap
  */
 export const fetchCurrentWeather = async () => {
-  // If no API key is available, use fallback data immediately
+  // If no API key is available, throw error - no fake data
   if (!WEATHER_CONFIG.apiKey || WEATHER_CONFIG.apiKey === 'demo_key') {
-    console.log('No weather API key configured, using realistic fallback data');
-    return getFallbackWeatherData();
+    throw new Error('No weather API key configured');
   }
   
   try {
@@ -63,7 +62,7 @@ export const fetchCurrentWeather = async () => {
     };
   } catch (error) {
     console.error('Error fetching weather data:', error);
-    return getFallbackWeatherData();
+    throw error;
   }
 };
 
