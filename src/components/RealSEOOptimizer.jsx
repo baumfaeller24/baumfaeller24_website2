@@ -7,8 +7,8 @@ const RealSEOOptimizer = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [optimizations, setOptimizations] = useState([]);
 
-  // Real OpenAI API call for SEO optimization
-  const optimizeWithOpenAI = async () => {
+  // Real Grok AI API call for SEO optimization
+  const optimizeWithGrok = async () => {
     setIsAnalyzing(true);
     
     try {
@@ -109,7 +109,7 @@ const RealSEOOptimizer = () => {
 
   // Auto-optimize on component mount
   useEffect(() => {
-    optimizeWithOpenAI();
+    optimizeWithGrok();
   }, []);
 
   return (

@@ -7,14 +7,14 @@ export default async function handler(req, res) {
   const { business, location, services, competitors, currentContent } = req.body;
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('https://api.x.ai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4',
+        model: 'grok-beta',
         messages: [
           {
             role: 'system',
@@ -82,7 +82,7 @@ export default async function handler(req, res) {
     });
 
     if (!response.ok) {
-      throw new Error(`OpenAI API error: ${response.status}`);
+      throw new Error(`Grok API error: ${response.status}`);
     }
 
     const data = await response.json();
@@ -90,7 +90,7 @@ export default async function handler(req, res) {
 
     // Add timestamp and source
     seoOptimization.timestamp = new Date().toISOString();
-    seoOptimization.source = 'OpenAI GPT-4';
+    seoOptimization.source = 'Grok AI';
     seoOptimization.status = 'success';
 
     res.status(200).json(seoOptimization);
