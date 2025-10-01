@@ -6,7 +6,16 @@ export default async function handler(req, res) {
 
   const { location, treeType, diameter, height, reason, property } = req.body;
 
+  // Debug: Check if API key is available
+  if (!process.env.OPENAI_API_KEY) {
+    console.error('OPENAI_API_KEY environment variable not found');
+    const fallbackResult = generateFallbackResult(location, treeType, diameter, height, reason, property);
+    fallbackResult.error = 'API-Key nicht konfiguriert';
+    return res.status(200).json(fallbackResult);
+  }
+
   try {
+    console.log('Attempting Grok API call...');
     const response = await fetch('https://api.x.ai/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -14,7 +23,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'grok-2-vision-1212',
+        model: 'grok-4-latest',
         messages: [
           {
             role: 'system',
@@ -68,10 +77,18 @@ export default async function handler(req, res) {
     });
 
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`Grok API error: ${response.status} - ${errorText}`);
       throw new Error(`Grok API error: ${response.status}`);
     }
 
     const data = await response.json();
+    console.log('Grok API response received:', data);
+    
+    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+      throw new Error('Invalid API response structure');
+    }
+    
     const permitCheck = JSON.parse(data.choices[0].message.content);
 
     // Add metadata
@@ -82,10 +99,13 @@ export default async function handler(req, res) {
     res.status(200).json(permitCheck);
 
   } catch (error) {
-    console.error('Tree permit check error:', error);
+    console.error('Tree permit check error:', error.message);
+    console.error('Error details:', error);
     
     // Fallback response based on basic rules
     const fallbackResult = generateFallbackResult(location, treeType, diameter, height, reason, property);
+    fallbackResult.error = `API-Fehler: ${error.message}`;
+    fallbackResult.debug = 'Fallback-System aktiviert';
     res.status(200).json(fallbackResult);
   }
 }

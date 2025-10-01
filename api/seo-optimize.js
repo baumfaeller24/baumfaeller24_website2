@@ -14,7 +14,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'grok-2-vision-1212',
+        model: 'grok-4-latest',
         messages: [
           {
             role: 'system',
