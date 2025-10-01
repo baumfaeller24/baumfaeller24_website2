@@ -7,6 +7,7 @@ import RealSEOOptimizer from './components/RealSEOOptimizer.jsx'
 import OptimizedWeatherBanner from './components/OptimizedWeatherBanner.jsx'
 import DynamicHero from './components/DynamicHero.jsx'
 import ImprovedServices from './components/ImprovedServices.jsx'
+import TreePermitChecker from './components/TreePermitChecker.jsx'
 import './App.css'
 import heroBackground from './assets/hero-background.jpg'
 import treeEquipment from './assets/tree-equipment.jpg'
@@ -105,6 +106,9 @@ function App() {
 
       {/* Improved Services Section - 2-Column Layout inspired by Evergreen */}
       <ImprovedServices />
+
+      {/* Tree Permit Checker - AI-powered permit requirement analysis */}
+      <TreePermitChecker />
 
       {/* About Section */}
       <section id="about" className="py-18">
