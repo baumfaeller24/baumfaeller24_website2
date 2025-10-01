@@ -20,7 +20,7 @@ const DynamicHero = () => {
       subtitle: "Baumarbeiten",
       description: "Professionelle Baumfällung, Baumpflege und Sturmschadenbeseitigung in Berlin & Brandenburg",
       focus: "Allgemeine Baumarbeiten",
-      mobilePosition: "bg-center"
+      mobilePosition: "bg-top"
     },
     {
       image: treeClimber,
