@@ -102,23 +102,25 @@ const ImprovedServices = () => {
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-600 leading-relaxed mb-8 text-lg">
+                  <p className="text-gray-600 leading-relaxed mb-4 md:mb-8 text-lg">
                     {service.description}
                   </p>
 
-                  {/* Call-to-Action Button - Hidden on mobile */}
-                  <button 
-                    className={`hidden md:flex w-full ${service.color} text-white px-6 py-4 rounded-lg 
-                               font-semibold transition-all duration-300 items-center justify-center
-                               group-hover:shadow-lg transform group-hover:scale-105`}
+                  {/* Call-to-Action Button - Completely hidden on mobile */}
+                  <div className="hidden md:block">
+                    <button 
+                      className={`w-full ${service.color} text-white px-6 py-4 rounded-lg 
+                                 font-semibold transition-all duration-300 flex items-center justify-center
+                                 group-hover:shadow-lg transform group-hover:scale-105`}
                     onClick={() => {
                       // Scroll to contact section
                       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                     }}
                   >
-                    <span className="mr-2">Mehr erfahren</span>
-                    <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </button>
+                      <span className="mr-2">Mehr erfahren</span>
+                      <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                    </button>
+                  </div>
                 </div>
 
                 {/* Service Number Badge */}
