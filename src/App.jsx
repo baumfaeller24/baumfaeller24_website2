@@ -60,8 +60,10 @@ function App() {
   return (
     <div className="min-h-screen bg-background">
       {/* AI Components - Hidden Background Processes */}
-      {/* Real SEO Optimization with OpenAI */}
-      <RealSEOOptimizer />
+      {/* Real SEO Optimization with OpenAI - Hidden on mobile */}
+      <div className="hidden md:block">
+        <RealSEOOptimizer />
+      </div>
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-border z-50">
@@ -110,8 +112,8 @@ function App() {
       {/* Tree Permit Checker - AI-powered permit requirement analysis */}
       <TreePermitChecker />
 
-      {/* About Section */}
-      <section id="about" className="py-18">
+      {/* About Section - Hidden on mobile (KI-generated content) */}
+      <section id="about" className="hidden md:block py-18">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
