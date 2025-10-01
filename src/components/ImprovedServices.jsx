@@ -67,6 +67,11 @@ const ImprovedServices = () => {
             Mit über 12 Jahren Erfahrung bieten wir Ihnen professionelle Baumarbeiten 
             mit modernster Technik und höchsten Sicherheitsstandards.
           </p>
+          <p className="md:hidden text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mt-4">
+            Von der einfachen Baumfällung bis zur komplexen Baufeldräumung - wir sind Ihr zuverlässiger Partner 
+            in Berlin und Brandenburg. Nutzen Sie unseren kostenlosen Genehmigungscheck um herauszufinden, 
+            ob für Ihr Vorhaben eine behördliche Genehmigung erforderlich ist.
+          </p>
         </div>
 
         {/* Services Grid - 2 Column Layout inspired by Evergreen */}
@@ -101,10 +106,10 @@ const ImprovedServices = () => {
                     {service.description}
                   </p>
 
-                  {/* Call-to-Action Button */}
+                  {/* Call-to-Action Button - Hidden on mobile */}
                   <button 
-                    className={`w-full ${service.color} text-white px-6 py-4 rounded-lg 
-                               font-semibold transition-all duration-300 flex items-center justify-center
+                    className={`hidden md:flex w-full ${service.color} text-white px-6 py-4 rounded-lg 
+                               font-semibold transition-all duration-300 items-center justify-center
                                group-hover:shadow-lg transform group-hover:scale-105`}
                     onClick={() => {
                       // Scroll to contact section
@@ -128,8 +133,8 @@ const ImprovedServices = () => {
           })}
         </div>
 
-        {/* Bottom Call-to-Action */}
-        <div className="text-center mt-16">
+        {/* Bottom Call-to-Action - Hidden on mobile */}
+        <div className="hidden md:block text-center mt-16">
           <div className="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               Nicht sicher, welche Leistung Sie benötigen?
