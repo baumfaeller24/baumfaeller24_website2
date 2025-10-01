@@ -1,5 +1,5 @@
 import React from 'react';
-import { TreePine, Scissors, Shield, Zap, Drill, Truck, ArrowRight } from 'lucide-react';
+import { TreePine, Scissors, Shield, Zap, Drill, Truck } from 'lucide-react';
 
 const ImprovedServices = () => {
   const services = [
@@ -106,21 +106,7 @@ const ImprovedServices = () => {
                     {service.description}
                   </p>
 
-                  {/* Call-to-Action Button - Completely hidden on mobile */}
-                  <div className="hidden md:block">
-                    <button 
-                      className={`w-full ${service.color} text-white px-6 py-4 rounded-lg 
-                                 font-semibold transition-all duration-300 flex items-center justify-center
-                                 group-hover:shadow-lg transform group-hover:scale-105`}
-                    onClick={() => {
-                      // Scroll to contact section
-                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >
-                      <span className="mr-2">Mehr erfahren</span>
-                      <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                    </button>
-                  </div>
+                  {/* Buttons removed - cleaner design, no broken links */}
                 </div>
 
                 {/* Service Number Badge */}
@@ -135,37 +121,7 @@ const ImprovedServices = () => {
           })}
         </div>
 
-        {/* Bottom Call-to-Action - Hidden on mobile */}
-        <div className="hidden md:block text-center mt-16">
-          <div className="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Nicht sicher, welche Leistung Sie benötigen?
-            </h3>
-            <p className="text-gray-600 mb-6 text-lg">
-              Rufen Sie uns an für eine kostenlose Beratung. Wir finden gemeinsam die beste Lösung für Ihr Projekt.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => window.location.href = 'tel:030659400049'}
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg 
-                           font-semibold transition-all duration-300 flex items-center justify-center
-                           hover:shadow-lg transform hover:scale-105"
-              >
-                <span className="mr-2">📞</span>
-                Jetzt anrufen: 030 65 94 00 49
-              </button>
-              <button 
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-gray-600 hover:bg-gray-700 text-white px-8 py-4 rounded-lg 
-                           font-semibold transition-all duration-300 flex items-center justify-center
-                           hover:shadow-lg transform hover:scale-105"
-              >
-                <span className="mr-2">✉️</span>
-                Kostenloses Angebot
-              </button>
-            </div>
-          </div>
-        </div>
+        {/* Bottom call-to-action removed for cleaner design */}
       </div>
     </section>
   );
