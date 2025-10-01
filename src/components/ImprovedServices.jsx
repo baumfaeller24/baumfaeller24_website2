@@ -54,20 +54,20 @@ const ImprovedServices = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="py-8 bg-gray-50">
       <div className="container mx-auto px-4">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
             Unsere Leistungen
           </h2>
-          <div className="w-24 h-1 bg-green-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <div className="w-12 h-0.5 bg-green-600 mx-auto mb-3"></div>
+          <p className="text-sm text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Mit über 12 Jahren Erfahrung bieten wir Ihnen professionelle Baumarbeiten 
             mit modernster Technik und höchsten Sicherheitsstandards.
           </p>
-          <p className="md:hidden text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mt-4">
+          <p className="md:hidden text-sm text-gray-600 max-w-xl mx-auto leading-relaxed mt-2">
             Von der einfachen Baumfällung bis zur komplexen Baufeldräumung - wir sind Ihr zuverlässiger Partner 
             in Berlin und Brandenburg. Nutzen Sie unseren kostenlosen Genehmigungscheck um herauszufinden, 
             ob für Ihr Vorhaben eine behördliche Genehmigung erforderlich ist.
@@ -75,34 +75,34 @@ const ImprovedServices = () => {
         </div>
 
         {/* Services Grid - 2 Column Layout inspired by Evergreen */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto">
           {services.map((service) => {
             const IconComponent = service.icon;
             
             return (
               <div 
                 key={service.id}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 
-                           transform hover:-translate-y-2 overflow-hidden group"
+                className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 
+                           transform hover:-translate-y-1 overflow-hidden group"
               >
-                <div className="p-8">
+                <div className="p-3">
                   
                   {/* Icon and Title Row */}
-                  <div className="flex items-center mb-6">
-                    <div className={`w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center 
-                                   group-hover:bg-gray-50 transition-colors duration-300 mr-4`}>
-                      <IconComponent className={`w-8 h-8 ${service.iconColor}`} />
+                  <div className="flex items-center mb-2">
+                    <div className={`w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center 
+                                   group-hover:bg-gray-50 transition-colors duration-300 mr-3`}>
+                      <IconComponent className={`w-4 h-4 ${service.iconColor}`} />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                      <h3 className="text-sm font-bold text-gray-900 mb-1">
                         {service.title}
                       </h3>
-                      <div className={`w-12 h-1 ${service.color.replace('hover:', '').replace('bg-', 'bg-')} rounded-full`}></div>
+                      <div className={`w-6 h-0.5 ${service.color.replace('hover:', '').replace('bg-', 'bg-')} rounded-full`}></div>
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-600 leading-relaxed mb-4 md:mb-8 text-lg">
+                  <p className="text-gray-600 leading-relaxed mb-2 text-xs">
                     {service.description}
                   </p>
 
@@ -110,9 +110,9 @@ const ImprovedServices = () => {
                 </div>
 
                 {/* Service Number Badge */}
-                <div className="absolute top-4 right-4">
-                  <div className={`w-8 h-8 rounded-full ${service.color.replace('hover:', '').replace('bg-', 'bg-')} 
-                                 text-white flex items-center justify-center font-bold text-sm`}>
+                <div className="absolute top-2 right-2">
+                  <div className={`w-5 h-5 rounded-full ${service.color.replace('hover:', '').replace('bg-', 'bg-')} 
+                                 text-white flex items-center justify-center font-bold text-xs`}>
                     {service.id}
                   </div>
                 </div>
