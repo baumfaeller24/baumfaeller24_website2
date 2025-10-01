@@ -28,7 +28,7 @@ const DynamicHero = () => {
       subtitle: "Seilklettertechnik",
       description: "Sichere Baumfällung in schwer zugänglichen Bereichen mit modernster Klettertechnik",
       focus: "Spezialfällungen",
-      mobilePosition: "bg-center"
+      mobilePosition: "bg-right-top"
     },
     {
       image: excavatorWork,
@@ -36,7 +36,7 @@ const DynamicHero = () => {
       subtitle: "Rodungsarbeiten",
       description: "Effiziente Flächenräumung mit schwerem Gerät für Bauprojekte und Landschaftsgestaltung",
       focus: "Baufeldräumung",
-      mobilePosition: "bg-center"
+      mobilePosition: "bg-left-center"
     },
     {
       image: stumpGrinder,
@@ -44,7 +44,7 @@ const DynamicHero = () => {
       subtitle: "Stubbenfräsung",
       description: "Komplette Entfernung von Baumstümpfen mit modernster Frästechnik",
       focus: "Wurzelstockentfernung",
-      mobilePosition: "bg-center"
+      mobilePosition: "bg-center-top"
     },
     {
       image: treeHandler,
@@ -52,7 +52,7 @@ const DynamicHero = () => {
       subtitle: "Maschinentechnik",
       description: "Präzise Baumarbeiten mit speziellen Maschinen für maximale Sicherheit und Effizienz",
       focus: "Technische Expertise",
-      mobilePosition: "bg-center"
+      mobilePosition: "bg-right-center"
     }
   ];
 
@@ -100,7 +100,7 @@ const DynamicHero = () => {
         {workScenes.map((scene, index) => (
           <div
             key={index}
-            className={`absolute inset-0 bg-cover ${scene.mobilePosition} md:bg-center bg-no-repeat transition-opacity duration-1000 ${
+            className={`absolute inset-0 bg-cover md:bg-cover ${scene.mobilePosition} md:bg-center bg-no-repeat transition-opacity duration-1000 ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ backgroundImage: `url(${scene.image})` }}
