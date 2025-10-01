@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { Phone, Mail, MapPin, Clock, Shield, Award, Wrench, TreePine, Truck, Zap } from 'lucide-react'
-import RealSEOOptimizer from './components/RealSEOOptimizer.jsx'
+import SEODashboard from './components/SEODashboard.jsx'
 import OptimizedWeatherBanner from './components/OptimizedWeatherBanner.jsx'
 import DynamicHero from './components/DynamicHero.jsx'
 import ImprovedServices from './components/ImprovedServices.jsx'
@@ -62,7 +62,7 @@ function App() {
       {/* AI Components - Hidden Background Processes */}
       {/* Real SEO Optimization with OpenAI - Hidden on mobile */}
       <div className="hidden md:block">
-        <RealSEOOptimizer />
+        <SEODashboard />
       </div>
 
       {/* Navigation */}

@@ -1,0 +1,48 @@
+{
+  "functions": {
+    "api/seo-monitor.js": {
+      "maxDuration": 30
+    },
+    "api/google-search-console.js": {
+      "maxDuration": 20
+    },
+    "api/generate-content.js": {
+      "maxDuration": 25
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/seo-monitor",
+      "schedule": "0 6 * * *"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/api/robots"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ]
+}
